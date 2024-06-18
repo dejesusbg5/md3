@@ -9,7 +9,7 @@ const materialTheme = document.createElement("style");
 materialTheme.setAttribute("id", "material-theme");
 document.head.appendChild(materialTheme);
 
-window.colorScheme = (hexColor) => {
+window.colorScheme = function(hexColor) {
   const sourceColor = argbFromHex(hexColor);
   const theme = themeFromSourceColor(sourceColor);
   const { palettes } = theme;
@@ -46,7 +46,7 @@ window.colorScheme = (hexColor) => {
   materialTheme.textContent = `:root { ${cssText} }`;
 }
 
-window.colorSchemeImg = (path) => {
+window.colorSchemeImg = function(path) {
   const img = document.createElement("img");
   img.crossOrigin = "Anonymous";
   img.src = path;
@@ -59,7 +59,7 @@ window.colorSchemeImg = (path) => {
   });
 }
 
-window.toggleDarkMode = () => {
+window.toggleDarkMode = function() {
   document.body.classList.toggle("light");
   document.body.classList.toggle("dark");
 }
