@@ -12,7 +12,6 @@ document.head.appendChild(materialTheme);
 window.colorScheme = function (hexColor) {
   const sourceColor = argbFromHex(hexColor);
   const theme = themeFromSourceColor(sourceColor);
-  console.log(JSON.stringify(theme));
   const { palettes } = theme;
 
   let cssText = "";
@@ -61,7 +60,6 @@ window.colorScheme = function (hexColor) {
           };
 
           overlay.l += source.l > 0.5 ? (j + 5.5) / 200 : (j + 1.5) / 150;
-          console.log(source);
           cssText += `--${paletteName}-${tone}-e${j}: ${chroma(overlay)};`;
         }
       }
