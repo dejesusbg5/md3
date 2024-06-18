@@ -9,7 +9,7 @@ const materialTheme = document.createElement("style");
 materialTheme.setAttribute("id", "material-theme");
 document.head.appendChild(materialTheme);
 
-function colorSchemeHCT(hexColor) {
+window.colorScheme = (hexColor) => {
   const sourceColor = argbFromHex(hexColor);
   const theme = themeFromSourceColor(sourceColor);
   const { palettes } = theme;
@@ -46,7 +46,7 @@ function colorSchemeHCT(hexColor) {
   materialTheme.textContent = `:root { ${cssText} }`;
 }
 
-function colorSchemeImg(path) {
+window.colorSchemeImg = (path) => {
   const img = document.createElement("img");
   img.crossOrigin = "Anonymous";
   img.src = path;
@@ -55,11 +55,11 @@ function colorSchemeImg(path) {
     const vibrant = new Vibrant(img);
     const swatches = vibrant.swatches();
     const primary = swatches.Vibrant?.getHex() ?? swatches.DarkVibrant?.getHex() ?? swatches.LightVibrant?.getHex();
-    colorSchemeHCT(primary);
+    window.colorScheme(primary);
   });
 }
 
-function toggleDarkMode() {
+window.toggleDarkMode = () => {
   document.body.classList.toggle("light");
   document.body.classList.toggle("dark");
 }
